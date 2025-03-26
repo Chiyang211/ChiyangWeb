@@ -1,0 +1,556 @@
+/* =========================
+   1. RESET / 基礎設定
+   ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  color: #333;
+  line-height: 1.5;
+  /* 重要：保留導覽列空間，避免內容被固定導覽列覆蓋 */
+  margin-top: 80px;
+}
+
+/* =========================
+   2. 固定導覽列 + 滾動縮小
+   ========================= */
+.navbar {
+  position: fixed;     /* 固定導覽列 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;        /* 置於最上層 */
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 1rem 2rem;
+  transition: all 0.3s ease; /* 平滑過渡 */
+}
+
+/* LOGO + 公司名稱區 */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;         /* LOGO 與文字之間的距離 */
+}
+
+.logo-img {
+  width: 50px;         /* 視需求調整 LOGO 大小 */
+  height: auto;
+  transition: width 0.3s ease;
+}
+.logo-text {
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  transition: font-size 0.3s ease;
+}
+.logo-text:hover {
+  color: #0072bc;      /* 滑鼠移上公司名稱時顯示的顏色 */
+}
+
+/* 導覽列連結 */
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;        
+  justify-content: flex-end;  /* 向右對齊 */
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 連結樣式 */
+.nav-links li {
+  white-space: nowrap;  /* 避免斷詞換行 */
+}
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  position: relative;
+  display: inline-block;
+  font-size: 1.3rem;
+}
+
+/* 大螢幕下：a::after 產生從中間展開的底線 */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%;             /* 以連結正中為基準 */
+  bottom: -4px;          /* 與文字底部距離 */
+  width: 100%;           /* 與連結文字同寬 */
+  height: 4px;           /* 線條粗細 */
+  background-color: #0072bc;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.nav-links a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* 強制換行的空白 li */
+.line-break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+/* 滾動後縮小 (shrink) 狀態 */
+.navbar.shrink {
+  height: 60px;
+  padding: 0.5rem 2rem;
+}
+.navbar.shrink .logo-img {
+  width: 40px;
+}
+.navbar.shrink .logo-text {
+  font-size: 1.6rem;
+}
+
+/* =========================
+   漢堡區
+   ========================= */
+
+/* 漢堡按鈕基本樣式 */
+.hamburger {
+  display: none; /* 大螢幕隱藏 */
+  cursor: pointer;
+  position: relative;
+  width: 30px;
+  height: 24px;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #333;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+/* 小螢幕設定：顯示漢堡按鈕並啟用轉換效果 */
+@media (max-width: 1000px) {
+  .hamburger {
+    display: block;
+    position: relative; /* 或 absolute / fixed，依需求調整 */
+    z-index: 1100;      /* 確保漢堡按鈕在選單上方 */
+  }
+  .nav-links {
+    z-index: 1000;
+  }
+  
+  /* 漢堡按鈕變叉叉效果 */
+  .hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  
+  /* 漢堡模式下：導覽連結以側邊選單形式顯示 */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100vh;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 60px;  /* 預留導覽列高度 */
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .nav-links li {
+    margin: 1rem;
+  }
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+  }
+  
+  /* 當選單開啟時 */
+  .nav-links.open {
+    transform: translateX(0);
+  }
+  
+  /* 在漢堡模式下，隱藏 a::after，改用包在 <span> 內的偽元素 */
+  .nav-links a::after {
+    display: none;
+  }
+  
+  /* 調整每個連結內的 <span> */
+  .nav-links a span {
+    position: relative;
+    display: inline-block;
+  }
+  /* 在漢堡模式下，底線偽元素掛在 <span> 上，並調整寬度與距離 */
+  .nav-links a span::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px; /* 可依需求調整，例如 -2px */
+    width: 90%;   /* 調整線條長度 */
+    height: 4px;
+    background-color: #0072bc;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  .nav-links a span:hover::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
+/* =========================
+   3. 其他常用區塊
+   ========================= */
+
+/* 容器 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* 首頁 - Hero 區塊 */
+.hero-section {
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.hero-content {
+  text-align: center;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  padding: 2rem;
+  border-radius: 4px;
+}
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.btn {
+  display: block;
+  width: fit-content;
+  background: #0072bc;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  text-decoration: none;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+.btn:hover {
+  background: #005999;
+}
+
+/* 首頁 - 服務項目區塊 */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+.service-item {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  text-align: center;
+}
+.service-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+/* about.html 區塊 */
+.about-intro {
+  content: "";
+  display: block;
+  clear: both;
+}
+.about-philosophy {
+  margin-top: 2rem;
+}
+.about-philosophy ul {
+  list-style: disc;
+  margin-left: 2rem;
+}
+.about-cert {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.about-cert ul {
+  list-style: disc;
+  margin-left: 2rem;
+}
+
+/* 專業證照：多筆使用 .license-list */
+.license-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.license-item {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  text-align: center;
+}
+.license-item img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;
+}
+.license-name {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.license-valid {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* services.html */
+.service-item {
+  margin-bottom: 2rem;
+}
+.service-item img {
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+/* =========================
+   4. Projects.html - 多欄 (Masonry) 佈局
+   ========================= */
+.project-grid {
+  column-count: 3;
+  column-gap: 1.5rem;
+}
+
+/* RWD：992px 以下 => 2 欄 */
+@media (max-width: 992px) {
+  .project-grid {
+    column-count: 2;
+  }
+}
+
+/* RWD：576px 以下 => 1 欄 */
+@media (max-width: 576px) {
+  .project-grid {
+    column-count: 1;
+  }
+}
+
+/* 每個卡片以 inline-block 在多欄中排列 */
+.project-item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+.project-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.project-item h3 {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* contact.html */
+.contact-section img {
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: block;
+}
+
+/* =========================
+   5. Lightbox 效果 (點擊放大檢視)
+   ========================= */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+.lightbox-img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s;
+}
+.lightbox-close:hover {
+  color: #ccc;
+}
+
+/* =========================
+   7. Past Projects Table 美化
+   ========================= */
+.past-projects-wrap {
+  display: none;
+  margin-top: 2rem;
+  overflow-x: auto;
+}
+
+.past-projects-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  text-align: left;
+}
+
+.past-projects-table thead {
+  background: #f7f7f7;
+}
+
+.past-projects-table th,
+.past-projects-table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+}
+
+.past-projects-table tr:hover {
+  background: #fafafa;
+}
+
+
+/* =========================
+   index 
+   ========================= */
+   
+.home-intro h2 {
+  font-size: 2rem; /* 調整“起暘科技工程有限公司”標題的字體大小 */
+}
+
+.home-services h2 {
+  font-size: 2rem; /* 調整“主要服務”標題的字體大小 */
+}
+/* 工程實績區塊：可根據您的命名習慣自行調整 class 名稱 */
+
+.home-projects {
+  margin-top: 2rem;       /* 與上方區塊留些距離 */
+  text-align: center;     /* 置中標題與圖片描述 */
+}
+
+.home-projects h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+/* 讓 6 張圖片排成 2 行 x 3 列 (視螢幕大小而定) */
+.projects-overview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 一列三個 */
+  gap: 1.5rem; /* 卡片間距 */
+  justify-items: center; /* 讓每個卡片在該欄置中 */
+}
+
+/* 單個卡片 */
+.project-item {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 400px; /* 可自行調整卡片寬度上限 */
+  box-sizing: border-box;
+}
+
+.project-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+/* 卡片標題 */
+.project-item h3 {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+
+
+/* =========================
+   6. 頁尾
+   ========================= */
+footer {
+  background: #347cbe;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+.footer-content p {
+  margin: 0.5rem 0;
+}
+.footer-content a {
+  color: #fff;  /* Email 連結也維持白色 */
+  text-decoration: underline; /* 可自行決定是否有底線 */
+}
+.footer-content a:hover {
+  color: #9cd5f2; /* 滑鼠移上 Email 時改變顏色 */
+}

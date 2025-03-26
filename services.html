@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>服務項目 - 起暘科技工程</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <!-- 固定 + 可縮小導覽列 -->
+  <header>
+    <nav class="navbar" id="mainNavbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="起暘科技工程 Logo" class="logo-img">
+        <a href="index.html" class="logo-text">起暘科技工程有限公司</a>
+      </div>	  
+  <!-- 漢堡按鈕（僅小螢幕顯示） -->
+    <div class="hamburger" id="hamburgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>	  	  
+	<ul class="nav-links" id="navLinks">
+		<li><a href="index.html"><span>首頁</span></a></li>
+		<li><a href="about.html"><span>關於我們</span></a></li>
+		<li><a href="services.html"><span>服務項目</span></a></li>
+		<li><a href="projects.html"><span>工程實績</span></a></li>
+		<li><a href="contact.html"><span>聯絡我們</span></a></li>
+    </ul>
+    </nav>
+  </header>
+
+  <section class="services-section container">
+    <h1>服務項目</h1>
+    <br>
+
+  <style>
+    /* 將服務項目設定為2欄排版 */
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* 2欄 */
+      gap: 1.5rem;                    /* 欄間距 */
+      align-items: start;            /* 讓卡片頂端對齊 */
+    }
+    .service-grid .service-item {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 1rem;
+    }
+    .service-grid .service-item img {
+      width: 100%; 
+      height: auto;
+      max-width: 600px; /* 視需求調整圖片最大寬 */
+      margin-bottom: 0.5rem;
+    }
+    /* 若想移除上方 <style> 並放到style.css，也可以把這段搬進 style.css 裡 */
+  </style>
+
+
+    <!-- 新增一個 .service-grid 容器包住所有 .service-item -->
+    <div class="service-grid">
+
+      <article class="service-item">
+        <h2>空調通風</h2>
+        <img src="images/service1.jpg" alt="空調通風工程照片" />
+        <p>
+          高效能系統與設備配置，維持良好空氣品質。
+        </p>
+      </article>
+
+      <article class="service-item">
+        <h2>機電工程</h2>
+        <img src="images/service2.jpg" alt="機電工程施工現場" />
+        <p>
+          系統整合，3D套繪模擬，預先掌握可能風險。
+        </p>
+      </article>
+
+      <article class="service-item">
+        <h2>水電消防</h2>
+        <img src="images/service3.jpg" alt="水電消防工程照片" />
+        <p>
+          優質施工不單講究細節，更滿足法規安全需求。
+        </p>
+      </article>
+
+      <article class="service-item">
+        <h2>維修保養</h2>
+        <img src="images/service4.jpg" alt="設備維修保養示意圖" />
+        <p>
+          空調水電消防定檢維修，確保安全升級擴充。
+        </p>
+      </article>
+
+    </div> <!-- .service-grid 結束 -->
+
+  </section>
+
+  <footer>
+    <p>
+      總公司 / 104 台北市松山區寶清街31號6樓-1 | 
+      TEL：02-2765-3642 | 
+      FAX：02-2765-0860 | 
+      Email：<a href="chiyang.hvac211@gmail.com">chiyang.hvac211@gmail.com</a>
+    </p>
+    <p>
+      © 2025 起暘科技工程有限公司. All Rights Reserved. 
+      Design by Chiyang
+    </p>
+  </footer>
+
+  <!-- JS：監聽scroll事件，控制shrink class -->
+  <script>
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('mainNavbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('shrink');
+      } else {
+        navbar.classList.remove('shrink');
+      }
+    });
+  </script>
+  
+  <script>
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+
+hamburgerBtn.addEventListener('click', () => {
+  // 同時對按鈕和選單切換 open class
+  hamburgerBtn.classList.toggle('open');
+  navLinks.classList.toggle('open');
+  });
+</script>
+  
+</body>
+</html>

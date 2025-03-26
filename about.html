@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>關於我們 - 起暘科技工程</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <!-- 固定 + 可縮小導覽列 -->
+  <header>
+    <nav class="navbar" id="mainNavbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="起暘科技工程 Logo" class="logo-img">
+        <a href="index.html" class="logo-text">起暘科技工程有限公司</a>
+      </div>
+	  
+  <!-- 漢堡按鈕（僅小螢幕顯示） -->
+    <div class="hamburger" id="hamburgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>	  	  
+	<ul class="nav-links" id="navLinks">
+		<li><a href="index.html"><span>首頁</span></a></li>
+		<li><a href="about.html"><span>關於我們</span></a></li>
+		<li><a href="services.html"><span>服務項目</span></a></li>
+		<li><a href="projects.html"><span>工程實績</span></a></li>
+		<li><a href="contact.html"><span>聯絡我們</span></a></li>
+    </ul>
+    </nav>
+  </header>
+
+  <section class="about-section container">
+    <h1>關於我們</h1>
+    <div class="about-intro">
+		<img src="images/intro.jpg" alt="六邊形圖" 
+			 style="float: right; width: 300px; margin-left: 1rem; margin-bottom: 1rem;" />
+      <p>
+        起暘科技工程創立於 2006 年四月，提供水電消防、空調通風等機電工程整合規劃與施工，承攬多項集合式住宅、學校校舍、百貨商場與公共工程之大型專案。
+      </p>
+	  <br>
+      <p>
+        秉持「進步(Progress)」、「品質(Quality)」、「服務(Service)」三大核心經營理念，起暘結合精良的自有工班與管理人員，依循法規，為大眾打造安全、節能且舒適的生活環境。
+      </p>
+	  
+    </div>
+ <br>
+    <h2>經營理念</h2>
+    <div class="about-philosophy">
+     
+      <ul>
+        <li><strong>Progress：</strong>以客戶需求為出發，持續精進成長。</li>
+        <li><strong>Quality：</strong>沒有最好只有更好，優化施工與維修品質。</li>
+        <li><strong>Service：</strong>專案控管內外兼具，滿足客戶多面向需求。</li>
+      </ul>
+    </div>
+		<br>
+ 
+<h2>專業證照</h2>
+<div class="license-list">
+  <!-- 證照1 -->
+  <div class="license-item" data-img="images/license1-large.jpg">
+    <!-- 小圖預覽 (可與大圖同檔案或不同檔案) -->
+    <img src="images/license1.jpg" alt="自來水管承裝業 證照">
+    <p class="license-name">自來水管承裝業</p>
+    <p class="license-valid">有效日期：114年6月8日</p>
+  </div>
+
+  <!-- 證照2 -->
+  <div class="license-item" data-img="images/license2-large.jpg">
+    <img src="images/license2.jpg" alt="甲等水管公會 證照">
+    <p class="license-name">甲等水管公會</p>
+    <p class="license-valid">有效日期：114年12月31日</p>
+  </div>
+
+  <!-- 證照3 -->
+  <div class="license-item" data-img="images/license3-large.jpg">
+    <img src="images/license3.jpg" alt="甲級電器公會 證照">
+    <p class="license-name">甲級電器公會</p>
+    <p class="license-valid">有效日期：114年12月31日</p>
+  </div>
+
+  <!-- 證照4 -->
+  <div class="license-item" data-img="images/license4-large.jpg">
+    <img src="images/license4.jpg" alt="甲級電器承裝業 證照">
+    <p class="license-name">甲級電器承裝業</p>
+    <p class="license-valid">有效日期：114年6月7日</p>
+  </div>
+
+  <!-- 證照5 -->
+  <div class="license-item" data-img="images/license5-large.jpg">
+    <img src="images/license5.jpg" alt="甲等冷凍空調公會 證照">
+    <p class="license-name">甲等冷凍空調公會</p>
+    <p class="license-valid">有效日期：114年12月31日</p>
+  </div>
+</div>
+
+<!-- Lightbox 容器 (隱藏的彈出視窗) -->
+<div class="lightbox" id="lightbox">
+  <!-- 關閉按鈕 -->
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <!-- 大圖載入位置 -->
+  <img src="" alt="證照放大預覽" class="lightbox-img" id="lightboxImg"/>
+</div>
+
+<script>
+  // 1. 取得所有證照卡片
+  const licenseItems = document.querySelectorAll('.license-item');
+  // 2. 取得 lightbox、關閉按鈕與顯示圖片的元素
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  // 3. 迭代每張證照卡，點擊後顯示大圖
+  licenseItems.forEach(item => {
+    item.addEventListener('click', () => {
+      // 讀取 data-img (大圖路徑)
+      const bigImgSrc = item.getAttribute('data-img');
+      // 放到 lightboxImg
+      lightboxImg.src = bigImgSrc;
+      // 顯示 lightbox (預設為 display: none;)
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  // 4. 點擊關閉按鈕或 lightbox 背景，關掉放大檢視
+  lightboxClose.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+
+  // 如果想點擊背景區域關閉，也可加上:
+  lightbox.addEventListener('click', (e) => {
+    // 若點擊位置是自己(lightbox)而非大圖 img，關閉
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+    }
+  });
+</script>
+
+
+  </section>
+
+  <footer>
+    <p>
+      總公司 / 104 台北市松山區寶清街31號6樓-1 | 
+      TEL：02-2765-3642 | 
+      FAX：02-2765-0860 | 
+      Email：<a href="chiyang.hvac211@gmail.com">chiyang.hvac211@gmail.com</a>
+    </p>
+    <p>
+      © 2025 起暘科技工程有限公司. All Rights Reserved. 
+      Design by Chiyang
+    </p>
+  </footer>
+
+  <!-- JS：監聽scroll事件，控制shrink class -->
+  <script>
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('mainNavbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('shrink');
+      } else {
+        navbar.classList.remove('shrink');
+      }
+    });
+  </script>
+  
+  <script>
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+
+hamburgerBtn.addEventListener('click', () => {
+  // 同時對按鈕和選單切換 open class
+  hamburgerBtn.classList.toggle('open');
+  navLinks.classList.toggle('open');
+  });
+</script>
+  
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>工程實績 - 起暘科技工程</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <!-- 固定 + 可縮小導覽列 -->
+  <header>
+    <nav class="navbar" id="mainNavbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="起暘科技工程 Logo" class="logo-img">
+        <a href="index.html" class="logo-text">起暘科技工程有限公司</a>
+      </div>
+	  
+  <!-- 漢堡按鈕（僅小螢幕顯示） -->
+    <div class="hamburger" id="hamburgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+	<ul class="nav-links" id="navLinks">
+		<li><a href="index.html"><span>首頁</span></a></li>
+		<li><a href="about.html"><span>關於我們</span></a></li>
+		<li><a href="services.html"><span>服務項目</span></a></li>
+		<li><a href="projects.html"><span>工程實績</span></a></li>
+		<li><a href="contact.html"><span>聯絡我們</span></a></li>
+    </ul>
+    </nav>
+  </header>
+
+  <section class="projects-section container">
+    <h1>工程實績</h1>
+	<br>
+    <p>以下為部分已完工案例：</p>
+
+    <!-- 
+      .project-grid 若在 style.css 
+      已設定 column-count: 3 及 column-gap: 1.5rem 
+      則應在寬度夠大的螢幕上顯示三欄。
+    -->
+    <div class="project-grid">
+      <!-- Project #1 -->
+      <div class="project-item">
+        <img src="images/宏築玉山岩空調通風、水電消防住宅新建工程.jpg" 
+             alt="宏築玉山岩空調通風、水電消防住宅新建工程" />
+        <h3>宏築玉山岩空調通風、水電消防住宅新建工程</h3>
+        <p>完工年度：105 年</p>
+      </div>
+
+      <!-- Project #2 -->
+      <div class="project-item">
+        <img src="images/開晟建設勝開大地新建機電通風工程.jpg" 
+             alt="開晟建設勝開大地新建機電通風工程" />
+        <h3>開晟建設勝開大地新建機電通風工程</h3>
+        <p>完工年度：109 年</p>
+      </div>
+
+      <!-- Project #3 -->
+      <div class="project-item">
+        <img src="images/昕彤觀瀾住宅新建工程.jpg" 
+             alt="昕彤觀瀾住宅新建工程" />
+        <h3>昕彤觀瀾住宅新建工程</h3>
+        <p>完工年度：110 年</p>
+      </div>
+
+      <!-- Project #4 -->
+      <div class="project-item">
+        <img src="images/基隆港東3東4碼頭旅運設施新建工程.jpg"
+             alt="基隆港東3東4碼頭旅運設施新建工程" />
+        <h3>基隆港東3東4碼頭旅運設施新建工程</h3>
+        <p>完工年度：110 年</p>
+      </div>
+
+      <!-- Project #5 -->
+      <div class="project-item">
+        <img src="images/北投宋公館拆屋重建集合住宅工程.jpg"
+             alt="北投宋公館拆屋重建集合住宅工程" />
+        <h3>北投宋公館拆屋重建集合住宅工程</h3>
+        <p>完工年度：110 年</p>
+      </div>
+	  
+       <!-- Project #6 -->
+      <div class="project-item">
+        <img src="images/桃園國際機場聯外捷運系統建設計畫(A22)機械空調工程.jpg"
+             alt="桃園國際機場聯外捷運系統建設計畫(A22)機械空調工程" />
+        <h3>桃園國際機場聯外捷運系統建設計畫(A22)機械空調工程</h3>
+        <p>完工年度：110 年</p>
+      </div>
+	  
+	    <!-- Project #7 -->
+      <div class="project-item">
+        <img src="images/富邦醴仁住宅新建案工程.jpg"
+             alt="富邦醴仁住宅新建案工程" />
+        <h3>富邦醴仁住宅新建案工程</h3>
+        <p>完工年度：112 年</p>
+      </div>
+	  
+	    <!-- Project #8 -->
+      <div class="project-item">
+        <img src="images/臺南安平環教中心新建工程統包計畫.jpg"
+             alt="臺南安平環教中心新建工程統包計畫-消防及通風空調工程" />
+        <h3>臺南安平再生水廠統包工程-消防及通風空調工程</h3>
+        <p>完工年度：113 年</p>
+      </div>
+	  
+	  	<!-- Project #9 -->
+      <div class="project-item">
+        <img src="images/廣宇晴朗二期集合住宅新建工程.jpg"
+             alt="廣宇晴朗二期集合住宅新建工程" />
+        <h3>廣宇晴朗二期集合住宅新建工程-水電消防工程</h3>
+        <p>完工年度：113 年</p>
+      </div>
+      <!-- 更多案例… -->
+
+    </div>
+    <!-- 新增：清單模式按鈕 -->
+    <div style="text-align: center; margin-top: 2rem;">
+      <button id="togglePastProjectsBtn" class="btn">
+        顯示歷年實績
+      </button>
+    </div>
+
+    <!-- 新增：歷年實績表格 (預設隱藏) -->
+    <div class="past-projects-wrap" id="pastProjectsWrap">
+      <h2 style="margin-top: 2rem;">歷年實績一覽表</h2>
+      <table class="past-projects-table">
+        <thead>
+          <tr>
+            <th>年份</th>
+            <th>業主</th>
+            <th>承攬工程</th>
+          </tr>
+        </thead>
+         <tbody>
+	<!-- 109年 -->	 
+    <tr><td>108年</td><td>大陸工程股份有限公司</td><td>開晟建設盛開大地新建第二階段臨時水電工程</td></tr>
+    <tr><td>108年</td><td>益鼎工程股份有限公司</td><td>開晟建設盛開大地新建機電通風工程</td></tr>	
+    <!-- 108年 -->
+    <tr><td>108年</td><td>大陸工程股份有限公司</td><td>泰民石牌第一階段臨時水電工程</td></tr>
+    <!-- 107年 -->
+    <tr><td>107年</td><td>大陸工程股份有限公司</td><td>華固新天地機電工程臨時給排水重新建置勞務工程</td></tr>
+    <tr><td>107年</td><td>大陸工程股份有限公司</td><td>華固新天地機電裝修及管路清疏攝影工程</td></tr>
+    <tr><td>107年</td><td>裕隆城開發股份有限公司</td><td>國揚南方莊園工務所臨時水電空調工程</td></tr>
+    <!-- 106年 -->
+    <tr><td>106年</td><td>大陸工程股份有限公司</td><td>國揚南方莊園第一階段臨時水電工程</td></tr>
+    <!-- 105年 -->
+    <tr><td>105年</td><td>大陸工程股份有限公司</td><td>源茂大孝空調設備工程</td></tr>
+    <tr><td>105年</td><td>大陸工程股份有限公司</td><td>琢賦北商新建空調工程</td></tr>
+    <tr><td>105年</td><td>裕隆工程股份有限公司</td><td>國揚忠孝第一階段臨時水電工程</td></tr>
+    <tr><td>105年</td><td>大陸工程股份有限公司</td><td>第一區管理處辦公大樓監控中心興建工程空調工程</td></tr>
+    <!-- 104年 -->
+    <tr><td>104年</td><td>大陸工程股份有限公司</td><td>兆模忠孝 101 機電住宅新建工程</td></tr>
+    <tr><td>104年</td><td>大陸工程股份有限公司</td><td>華固天鑄工務所水電空調及裝修工程</td></tr>
+    <tr><td>104年</td><td>大陸工程股份有限公司</td><td>華固天鑄地下室臨時通風設備工程</td></tr>
+    <tr><td>104年</td><td>大陸工程股份有限公司</td><td>啟佳中和第一階段臨時水電設備工程</td></tr>
+    <tr><td>104年</td><td>廣東晴朗股份有限公司</td><td>廣東晴朗臨時水電設備工程</td></tr>
+    <!-- 103年 -->
+    <tr><td>103年</td><td>芳園資產開發股份有限公司</td><td>台中文華星享道酒店熱回收工程</td></tr>
+    <tr><td>103年</td><td>大陸工程股份有限公司</td><td>兒童新樂園水電環控空調工程</td></tr>
+    <tr><td>103年</td><td>金永德實驗室設備有限公司</td><td>三芝馬偕醫學院 P2 實驗室空調工程</td></tr>
+    <tr><td>103年</td><td>大陸工程股份有限公司</td><td>遠雄建設 H89 三峽園新建工程空調工程</td></tr>
+    <tr><td>103年</td><td>大陸工程股份有限公司</td><td>中華電信 IDC 工務所空調設備工程</td></tr>
+    <tr><td>103年</td><td>大陸工程股份有限公司</td><td>華固新天地第一階段臨時水電工程</td></tr>
+    <!-- 101年 -->
+    <tr><td>101年</td><td>芳園資產開發股份有限公司</td><td>旗津飯店工程空調標</td></tr>
+    <tr><td>101年</td><td>大陸工程股份有限公司</td><td>新莊副都心第一階段臨時水電工程</td></tr>
+    <tr><td>101年</td><td>大陸工程股份有限公司</td><td>新莊副都心消防排煙及停車場通風設備工程</td></tr>
+    <tr><td>101年</td><td>大陸工程股份有限公司</td><td>南港展覽館擴建機電臨時水電工程</td></tr>
+    <!-- 100年 -->
+    <tr><td>100年</td><td>全科企業股份有限公司</td><td>製程空調高溫無塵室烘箱空調工程</td></tr>
+    <tr><td>100年</td><td>翰沃生電科技股份有限公司</td><td>無塵室低濕恆溫製程空調工程</td></tr>
+    <tr><td>100年</td><td>大陸工程股份有限公司</td><td>大直宜華第一階段臨時水電工程</td></tr>
+    <tr><td>100年</td><td>統營營造股份有限公司</td><td>內湖星巴克水電工程</td></tr>
+    <tr><td>100年</td><td>台北市聯合醫院</td><td>台北市聯合醫院陽明院100年度兒童呼吸照護病房空調工程</td></tr>
+    <tr><td>100年</td><td>大陸工程股份有限公司</td><td>信義路四段福德坑段空調工程 (謙華案)</td></tr>
+    <tr><td>100年</td><td>大陸工程股份有限公司</td><td>海華大地集合住宅新建空調工程</td></tr>
+    <tr><td>100年</td><td>中欣室內裝修設計股份有限公司</td><td>僑威華西區別墅水電空調新建工程</td></tr>
+    <!-- 98年 -->
+    <tr><td>98年</td><td>台北市教會</td><td>台北市教會第37集會所新建空調工程</td></tr>
+    <tr><td>98年</td><td>全科企業股份有限公司</td><td>物料放置區空調工程</td></tr>
+    <tr><td>98年</td><td>蘆閣汽車旅館(林森館)</td><td>林森館裝修水電及空調修繕工程</td></tr>
+    <tr><td>98年</td><td>匯豐商業銀行股份有限公司</td><td>中和分行空調工程</td></tr>
+    <!-- 97年 -->
+    <tr><td>97年</td><td>華夏技術學院</td><td>恆毅樓分離式空調工程</td></tr>
+    <tr><td>97年</td><td>家畜衛生試驗所</td><td>牛海綿狀病毒實驗室 P3 實驗室環境提升工程</td></tr>
+    <tr><td>97年</td><td>樺福建設開發股份有限公司</td><td>七張捷運站聯合開發大樓東棟地下停車場及機房通風設備變更工程</td></tr>
+    <tr><td>97年</td><td>樺福建設開發股份有限公司</td><td>七張捷運站聯合開發大樓東棟一樓大廳空調工程</td></tr>
+    <tr><td>97年</td><td>台北影業股份有限公司</td><td>台北影業策略性產物空調新建暨沖印室清淨室</td></tr>
+    <tr><td>97年</td><td>匯格股份有限公司</td><td>FSM 餐飲服務聯合大樓新建 150RT 變頻直膨空調工程</td></tr>
+    <!-- 96年 -->
+    <tr><td>96年</td><td>基隆仁祥醫院</td><td>眼科手術室 1000 級清淨室空調及設備工程</td></tr>
+    <tr><td>96年</td><td>大魯閣織維</td><td>商業空調工程</td></tr>
+    <tr><td>96年</td><td>基隆謝公館</td><td>70RT 直膨 VRV 系統住宅空調工程</td></tr>
+    <tr><td>96年</td><td>全科企業股份有限公司</td><td>100 級清淨室空調工程</td></tr>
+    <tr><td>96年</td><td>友聚工業有限公司</td><td>1000 級清淨室空調工程</td></tr>
+    <!-- 95年 -->
+    <tr><td>95年</td><td>榮電股份有限公司</td><td>牛海綿狀腦病毒診斷實驗室隔間工程</td></tr>
+    <tr><td>95年</td><td>宏達電國際電子廠</td><td>廠辦增建空調工程</td></tr>
+    <tr><td>95年</td><td>宏達電國際電子廠</td><td>消防風管排煙工程</td></tr>
+  </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      總公司 / 104 台北市松山區寶清街31號6樓-1 | 
+      TEL：02-2765-3642 | 
+      FAX：02-2765-0860 | 
+      Email：<a href="chiyang.hvac211@gmail.com">chiyang.hvac211@gmail.com</a>
+    </p>
+    <p>
+      © 2025 起暘科技工程有限公司. All Rights Reserved. 
+      Design by Chiyang
+    </p>
+  </footer>
+
+  <!-- JS：監聽 scroll事件(導覽列縮小) 及 按鈕切換歷年實績表格 -->
+  <script>
+    // 1. 固定導覽列縮小
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('mainNavbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('shrink');
+      } else {
+        navbar.classList.remove('shrink');
+      }
+    });
+
+    // 2. 切換歷年實績 (顯示/隱藏表格)
+    const togglePastProjectsBtn = document.getElementById('togglePastProjectsBtn');
+    const pastProjectsWrap = document.getElementById('pastProjectsWrap');
+
+    let isShowing = false; // 紀錄是否顯示中
+
+    togglePastProjectsBtn.addEventListener('click', function() {
+      isShowing = !isShowing;
+      pastProjectsWrap.style.display = isShowing ? 'block' : 'none';
+      togglePastProjectsBtn.textContent = isShowing ? '隱藏歷年實績' : '顯示歷年實績';
+    });
+  </script>
+  
+  <script>
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+
+hamburgerBtn.addEventListener('click', () => {
+  // 同時對按鈕和選單切換 open class
+  hamburgerBtn.classList.toggle('open');
+  navLinks.classList.toggle('open');
+  });
+</script>
+  
+</body>
+</html>
